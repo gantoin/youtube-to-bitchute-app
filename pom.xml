@@ -69,6 +69,7 @@
         <configuration>
           <source>1.8</source>
           <target>1.8</target>
+          <mainClass>fr.gantoin.bitchuteuploader.BitchuteUploaderApplication</mainClass>
         </configuration>
       </plugin>
     </plugins>
