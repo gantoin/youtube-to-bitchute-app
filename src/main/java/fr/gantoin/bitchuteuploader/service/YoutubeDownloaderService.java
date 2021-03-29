@@ -35,7 +35,7 @@ public class YoutubeDownloaderService {
 
         VideoDetails details = video.details();
         bitchuteVideo.setTitle(details.title());
-        String coverUrl = details.thumbnails().stream().findAny().orElseThrow();
+        String coverUrl = details.thumbnails().stream().findAny().get();
         coverUrl = coverUrl.substring(0, coverUrl.indexOf(".jpg")).concat(".jpg");
         URL url = new URL(coverUrl);
         BufferedImage img = ImageIO.read(url);

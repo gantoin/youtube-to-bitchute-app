@@ -10,7 +10,7 @@ import io.github.bonigarcia.wdm.WebDriverManager;
 public class BitchuteUploadMapper {
 
     public BitchuteUpload map(WebDriverManager chromedriver, BitchuteUploadDto dto) {
-        return new BitchuteUpload(chromedriver.getDownloadedDriverPath(), dto.getUser(), dto.getPassword(), false);
+        return new BitchuteUpload(chromedriver.getDownloadedDriverPath(), dto.getUser(), dto.getPassword(), true);
     }
 
 }
