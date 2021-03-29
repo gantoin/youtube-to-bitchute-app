@@ -1,17 +1,14 @@
-build:
+# youtube-to-bitchute-api
+
+As curl:
 
 ```shell
-docker build --tag=bitchute-uploader-api:latest .
+curl --location --request POST 'localhost:8080/upload' \
+--header 'Content-Type: application/json' \
+--data-raw '{
+    "user": "my_mail@gmail.com",
+    "password": "myPassword",
+    "youtubePath": "https://www.youtube.com/watch?v=7X8II6J-6mU"
+}'
 ```
 
-run:
-
-```shell
-docker run -p8090:8080 bitchute-uploader-api:latest
-```
-
-call:
-
-```shell
-curl localhost:8090/
-```
