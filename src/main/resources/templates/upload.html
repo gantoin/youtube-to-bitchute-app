@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="https://www.thymeleaf.org" lang="fr">
+<head>
+    <title>youtube-to-bitchute</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+</head>
+<body>
+<h1>Youtube 2 Bitchute App</h1>
+<h2>Upload a Youtube video on your Bitchute channel:</h2>
+<h3>
+    <a href="https://github.com/gantoin/youtube-to-bitchute-api">
+        https://github.com/gantoin/youtube-to-bitchute-api
+    </a>
+</h3>
+<!--/*@thymesVar id="upload" type="fr.gantoin.bitchuteuploader.api.dto.BitchuteUploadDto"*/-->
+<form action="#" method="post" th:action="@{/upload}" th:object="${upload}">
+    <label>Username or Email Address
+        <input placeholder="your_mail@protonmail.com" th:field="*{user}" type="text"/>
+    </label>
+    <label>Password
+        <input placeholder="*****" th:field="*{password}" type="password"/>
+    </label>
+    <label>Youtube link
+        <input placeholder="https://www.youtube.com/watch?v=7X8II6J-6mU" th:field="*{youtubePath}"
+               type="text"/>
+    </label>
+    <p><input type="submit" value="Submit"/> <input type="reset" value="Reset"/></p>
+</form>
+</body>
+</html>
