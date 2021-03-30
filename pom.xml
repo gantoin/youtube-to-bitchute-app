@@ -13,7 +13,7 @@
   <name>bitchute-uploader-api</name>
   <description>Demo project for a dockerized Spring Boot</description>
   <properties>
-    <java.version>11</java.version>
+    <java.version>1.8</java.version>
   </properties>
 
   <repositories>
@@ -72,12 +72,17 @@
   <build>
     <plugins>
       <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
         <configuration>
+          <manifest>
+            <packageName>fr.gantoin.java</packageName>
+          </manifest>
+          <manifestEntries>
+            <Created-By>gantoin</Created-By>
+          </manifestEntries>
           <source>1.8</source>
           <target>1.8</target>
-          <mainClass>fr.gantoin.bitchuteuploader.BitchuteUploaderApplication</mainClass>
         </configuration>
       </plugin>
     </plugins>
