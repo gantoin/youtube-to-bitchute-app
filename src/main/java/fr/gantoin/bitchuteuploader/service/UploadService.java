@@ -1,13 +1,10 @@
 package fr.gantoin.bitchuteuploader.service;
 
 import java.io.File;
-import java.io.IOException;
 import java.time.LocalDateTime;
 
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ModelAttribute;
-
-import com.github.kiulian.downloader.YoutubeException;
 
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -34,7 +31,7 @@ public class UploadService {
             log.info("Start uploading video on bitchute.com: {}", LocalDateTime.now());
             bitchuteUploadMapper.map(chromedriver, dto).uploadVideo(downloadedVideo);
             log.info("Video successfully uploaded: {}", LocalDateTime.now());
-        } catch (YoutubeException | IOException e) {
+        } catch (Exception e) {
             log.error("Error during process:{}", e.getMessage());
         } finally {
             DeleteFolderService.deleteFolder(new File("my_videos"));
