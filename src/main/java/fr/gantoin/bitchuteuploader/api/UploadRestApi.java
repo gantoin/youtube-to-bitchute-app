@@ -4,11 +4,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.concurrent.CompletableFuture;
 
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RestController;
 
 import com.github.kiulian.downloader.YoutubeException;
 
@@ -21,24 +19,17 @@ import fr.gantoin.bitchuteuploader.service.YoutubeDownloaderService;
 import fr.gantoin.bitchuteuploader.service.mapper.BitchuteUploadMapper;
 import io.github.bonigarcia.wdm.WebDriverManager;
 
-@Controller
+@RestController
 @RequiredArgsConstructor
-public class UploadApi {
+public class UploadRestApi {
 
     private final BitchuteUploadMapper bitchuteUploadMapper;
 
     private final YoutubeDownloaderService youtubeDownloaderService;
 
-    @GetMapping("/")
-    public String uploadFrom(Model model) {
-        model.addAttribute("upload", new BitchuteUploadDto());
-        return "upload";
-    }
-
-    @PostMapping("/upload")
-    public String upload(@ModelAttribute BitchuteUploadDto dto, Model model) {
+    @PostMapping("/upload/without-ui")
+    public void upload(@RequestBody BitchuteUploadDto dto) {
         CompletableFuture.runAsync(() -> {
-            model.addAttribute("upload", dto);
             try {
                 WebDriverManager chromedriver = WebDriverManager.chromedriver();
                 chromedriver.setup();
@@ -50,6 +41,5 @@ public class UploadApi {
                 DeleteFolderService.deleteFolder(new File("my_videos"));
             }
         });
-        return "result";
     }
 }
