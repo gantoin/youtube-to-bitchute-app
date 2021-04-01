@@ -1,4 +1,4 @@
-# youtube-to-bitchute-api
+# youtube-to-bitchute-app
 
 ## curl:
 
