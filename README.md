@@ -1,6 +1,6 @@
 # youtube-to-bitchute-api
 
-As curl:
+## curl:
 
 ```shell
 curl --location --request POST 'localhost:8080/upload' \
@@ -12,3 +12,9 @@ curl --location --request POST 'localhost:8080/upload' \
 }'
 ```
 
+## UI:
+
+https://radiant-journey-43647.herokuapp.com/
+Not works for large videos (free tiny heroku app)
+
+TODO: follow upload progress
